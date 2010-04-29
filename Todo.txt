@@ -1,0 +1,31 @@
+#------------------#
+# This is Todo.txt #
+#------------------#
+
+
+Test::Hexdump::Range
+	alway use ANSI or ascii. or direct to file and accept any format
+	
+	use a standard range descritption
+	accept bitfields?
+	not user settable color, background color is reserved for error
+	
+	accessing the gathered data makes it easy to find what data is different and return an alternative color
+	
+	
+	different bytes are displayed with red background
+		how do we tell DHR to change the color of only a few bytes within a range
+			./Build ; perl -Mblib scripts/hdr Todo.txt  -r 'header,40, yellow:padding,16:magic,16,red:size,4:data,10:data_got,10,on_red:data,80:footer,16'
+			./Build ; perl -Mblib scripts/hdr Todo.txt  -r 'header,40, yellow:padding,16:magic,16,red:size,4:data,10:data_exp,10,black on_green:data,80:footer,16'
+
+	cyclic colors must contain OK and error colors
+	user settable number of ranges to dispay after and before the diff in the binary data
+	
+	
+	side by side comparison
+
+  00000000 63 6f 6d 6d 69 74 20 31 39 39 61 34 62 31 32 37   00000000 63 6f 6d 6d 69 74 20 31 39 39 61 34 62 31 32 37
+  00000010 62 32 39 66 39 31 64 32 65 36 33 66 39 35 66 38   00000010 62 32 39 66 39 31 64 32 65 36 33 66 39 35 66 38
+  00000020 63 34 30 62 64 65 31 39 62                        00000020 63 34 30 62 64 65 31 39 62
+                                                                               
+handle ranges without data (comment)
